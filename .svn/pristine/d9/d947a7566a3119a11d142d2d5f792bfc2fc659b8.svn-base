@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tic-Tac : NodeJS </title>
+        <script src="app/lib/angular.js"></script>
+        <script src="app/lib/angular-route.js"></script>
+         <script src="app/lib/angular-sanitize.js"></script>
+      
+        <script src="app/lib/socket.io.js"></script>
+        <script src="app/lib/underscore.js"></script>
+        <script src="app/app.js"></script>
+        <script src="app/controllers/MainController.js"></script>
+         <script src="app/filters/emptycheck.js"></script>
+        <link rel="stylesheet" type="text/css" href="app/styles/app.css">
+        <link rel="stylesheet" type="text/css" href="app/styles/bootstrap/css/bootstrap.css">
+    </head>
+    <body ng-app="AngularSocketApp">
+        <div class="container-fluid">
+            <div class="row" ng-controller="MainController">
+                <div class="col-md-7">
+                    <input type="text" name="" value="" placeholder="Username" ng-model="username">
+                    <input type="button" name="" value="Start session" ng-if="!sessionStarted" ng-click="startSession()">
+                    <input type="button" name="" value="End session" ng-if="sessionStarted" ng-click="endSession()">
+                    <div> Play with :
+                        <select ng-options="user.username for user in availablePlayers" ng-model="players.playWith" ng-if="availablePlayers.length > 0" ng-disabled="gameStarted">
+                        </select>
+                        <input type="button" name="" value="Begin Game" ng-click="startGame()" ng-if="players.playWith" ng-disabled="gameStarted">
+                        <input type="button" name="" value="End Game" ng-click="startGame()" ng-if="gameStarted">
+                        {{ message }}
+                    </div>
+                </div>
+                <div class="row" ng-if="gameStarted">
+                   <div class="col-md-7">
+                    <table width="50%">
+                        <tr>
+                            <td width='33%' ng-bind-html="gameBoard[0][0] | chkEmpty" ng-click="processMove(0,0)"></td>
+                            <td width='33%' ng-bind-html="gameBoard[0][1] | chkEmpty" ng-click="processMove(0,1)"></td>
+                            <td width='33%' ng-bind-html="gameBoard[0][2] | chkEmpty" ng-click="processMove(0,2)"></td>
+                        </tr>
+                           <tr>
+                             <td width='33%' ng-bind-html="gameBoard[1][0] | chkEmpty" ng-click="processMove(1,0)"></td>
+                            <td width='33%' ng-bind-html="gameBoard[1][1] | chkEmpty" ng-click="processMove(1,1)"></td>
+                            <td width='33%' ng-bind-html="gameBoard[1][2] | chkEmpty" ng-click="processMove(1,2)"></td>
+                        </tr>
+                          <tr>
+                             <td width='33%' ng-bind-html="gameBoard[2][0] | chkEmpty" ng-click="processMove(2,0)"></td>
+                            <td width='33%' ng-bind-html="gameBoard[2][1] | chkEmpty" ng-click="processMove(2,1)"></td>
+                            <td width='33%' ng-bind-html="gameBoard[2][2] | chkEmpty" ng-click="processMove(2,2)"></td>
+                        </tr>
+                    </table>
+                </div>
+                </div>
+
+
+                     
+            </div>
+
+        </div>
+    </body>
+</html>

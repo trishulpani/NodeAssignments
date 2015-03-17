@@ -1,0 +1,37 @@
+<div class="row" ng-controller="MovieSearchController">
+	
+		<div class="row">
+		 <div class="col-md-6">Movies Database</div> 
+		 <div class="col-md-6"><input type="text" placeholder="Search..." ng-model="searchTerm">
+		 <input type="button" name="Search" value="Search" ng-click="doSearch()"></div>
+		</div>
+
+	
+
+	<div class="row">
+		<div class="col-md-8">
+		  <div class="row">
+				<h2 ng-if="searchData.total > 0"> Found {{ searchData.total }} movies</h2>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="row" ng-repeat = "movie in searchData.movies">
+
+		 <div class="row">
+		  	<div class="col-md-3"><img ng-src="{{ movie.thumbnail }}" alt="No image" width="25%" height="25%"></div>
+		  	<div class="col-md-5">
+		  		<h3>{{ movie.title }}</h3>
+		  		<p> <b>Cast</b>: {{ movie.cast }} </p>
+		  		<p> <b>Release Year</b>: {{ movie.releaseYear }} </p>
+		  		<p> <b>Running Time </b>: {{ movie.runtime }} </p>
+		  		<p> <b>Rating </b>: {{ movie.rating }} </p>
+		  	</div>
+		  	
+		  </div>
+		  <br/>
+	</div>
+
+ 
+</div>

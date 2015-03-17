@@ -1,0 +1,1 @@
+var angsocketApp = angular.module('AngularSocketApp', ['ngSanitize']);

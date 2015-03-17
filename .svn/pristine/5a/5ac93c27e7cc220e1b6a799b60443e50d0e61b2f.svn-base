@@ -1,0 +1,57 @@
+
+<h2>Search for Movies</h2>
+
+<div ng-controller="ListMoviesController">
+
+	<h3>Previously Searched Movies:</h3>
+	<ul>
+		<li ng-repeat="moviename in movieNameArray">
+		<a href="" ng-click="searchMovies(moviename)">{{moviename}}</a></li>
+	</ul>
+	<br/>
+</div>
+
+<div ng-controller="SearchMoviesController" id="searchMovies">
+
+	<input type="text" ng-model="moviename"> 
+	&nbsp;&nbsp;
+	<input type="button" value="Search" ng-click="searchMovies()" />
+
+	<hr/>
+	<h3>Searched Movies : </h3>
+	
+	<div ng-repeat="movie in moviesMatchedList">
+
+		<img ng-src="{{movie.posters.thumbnail}}" /> 
+		{{movie.title}}<br />
+		Release Year::: {{movie.year}}<br /> 
+		Duration::: {{movie.runtime}} minutes<br /> 
+		Rating::: {{movie.mpaa_rating}}<br /> 
+		Cast:::
+		<ul>
+			<li ng-repeat="cast in movie.abridged_cast">{{cast.name}}</li>
+		</ul>
+
+	</div>
+	
+
+	<hr/>
+	<h3>All Movies : </h3>
+	
+	<div ng-repeat="movie in movieList">
+
+		<img ng-src="{{movie.posters.thumbnail}}" /> 
+		{{movie.title}}<br />
+		Release Year::: {{movie.year}}<br /> 
+		Duration::: {{movie.runtime}} minutes<br /> 
+		Rating::: {{movie.mpaa_rating}}<br /> 
+		Cast:::
+		<ul>
+			<li ng-repeat="cast in movie.abridged_cast">{{cast.name}}</li>
+		</ul>
+
+	</div>
+
+	<hr />
+	
+</div>

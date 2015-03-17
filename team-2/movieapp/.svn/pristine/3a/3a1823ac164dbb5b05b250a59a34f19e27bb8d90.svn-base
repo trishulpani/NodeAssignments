@@ -1,0 +1,29 @@
+<div ng-init="showPreviousItems()">
+<ul>
+<li ng-repeat="moviename in searhedArr"><a href="" ng-click="searchMovies(moviename)">{{moviename}}</a></li>
+</ul>
+
+</div>
+
+<div>
+<h2>Movies DataBase</h2>
+<input type="text" ng-model="moviename"><br />
+<input type="button" value="Search" ng-click="searchMovies()" />
+</div>
+<div>
+<div ng-repeat="movie in movies">
+<img ng-src="{{movie.posters.thumbnail}}" />
+{{movie.title}}<br />
+Release Year::: {{movie.year}}<br/>
+Duration::: {{movie.runtime}} minutes<br/>
+Rating::: {{movie.mpaa_rating}}<br/>
+Cast:::
+<ul>
+<li ng-repeat="cast in movie.abridged_cast">{{cast.name}}</li>
+</ul>
+
+
+
+</div>
+<hr />
+</div>
